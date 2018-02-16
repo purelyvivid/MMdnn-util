@@ -2,7 +2,7 @@
 
 # MMdnn - Utilization for Keras to Tensorflow
 
-[MMdnn]((https://github.com/Microsoft/MMdnn)) is a model converter and enables us to transform model from a framework to another. This repository introduces the **utilization of MMdnn** and provide a simple **GUI** for inference task of image classification.
+[MMdnn]((https://github.com/Microsoft/MMdnn)) is a model converter and enables us to transform model from one framework to another. This repository introduces the **utilization of MMdnn** and provide a simple **GUI** for inference task of image classification.
 
 Firstly, download weights(.h5) and model structure(.json) form **Keras** and then convert them to **Intermediate Representation(IR)**. You can visualize IR if you'd like by  [MMdnn model visualizer](http://mmdnn.eastasia.cloudapp.azure.com:8080/) .
 
@@ -17,7 +17,7 @@ All you need to do is to set : 1) the path of your folder, 2) which model you'd 
 If you evironment setting has already done (step 1&2) and you'd like to run it by only using one command, you can modify the file `infer_keras2tf.sh`  and run below command (for step 3-10):
 
 ```shell
-sh infer_keras2tf.sh
+sh infer_keras2tf.sh  # for linux
 ```
 
 For **the first time you run this code**, it's nessasary to use **the above command** OR **step 1-10 of the following paragraph**.  Afterward, you could do inference derectly by the command such like:
@@ -30,11 +30,16 @@ python -c "from try_inference_tf import inference;print(inference('cat1.jpeg','i
 
 And get **the inference result by model 'inception_v3' for image 'cat1.jpeg'**:
 
-> 72.76% : tiger cat
-> 13.49% : tabby, tabby cat
+> 72.76% : tiger cat  
+>
+> 13.49% : tabby, tabby cat 
+>
 > 08.87% : Egyptian cat
-> 00.84% : plastic bag
-> 00.33% : lynx, catamount
+>
+> 00.84% : plastic bag 
+>
+> 00.33% : lynx, catamount 
+>
 
 Or, you could do inference by a simple GUI.  Use below command to open GUI.
 
@@ -205,10 +210,15 @@ python -c "from try_inference_tf import inference;print(inference('${inferImgPat
 And get **the inference result by model 'inception_v3' for image 'cat.jpeg'**:
 
 > 92.01% : Egyptian cat
+>
 > 06.03% : tabby, tabby cat
+>
 > 00.81% : tiger cat
+>
 > 00.26% : window screen
+>
 > 00.04% : window shade
+>
 
 Or, you could do inference by a simple **GUI**.  Use below command to open GUI.
 
