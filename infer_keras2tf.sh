@@ -36,4 +36,4 @@ cd ${mainPath}
 python inference_tf.py -n ${selfDefinedFileName}
 # step 10
 inferImgPath="cat.jpeg" # you can change to the other local path or an URL
-python -c "from try_inference_tf import inference;inference('${inferImgPath}','${model}' )"
+python -c "from try_inference_tf import inference;print(inference('${inferImgPath}','${model}' ))"
