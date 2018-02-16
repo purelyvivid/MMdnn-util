@@ -37,16 +37,16 @@ class GUI():
         # models = ("inception_v3","vgg16","vgg19","resnet","mobilenet","xception","YOLO")
         self.label_1to1_text_combobox("Model", models , width=50 ) 
         self.label_1to1_text_entry(name="ImageUrl", default_text="cat1.jpeg", width=100)
-        self.vb_dict = self.generate_variable_dict()
         self.button(self.click_show_img, "Show Image")
         self.button(self.click_inference, "Inference")
         
     def click_show_img(self):
+	self.vb_dict = self.generate_variable_dict()
         img_path = self.vb_dict["ImageUrl"]
         self.img_label(path=img_path)
     
     def click_inference(self):
-        #self.button(self.click_show_img, "Show Image")
+        self.vb_dict = self.generate_variable_dict()
         str_ = inference('cat.jpeg',self.vb_dict["Model"])
         #self.text_text(text=str(str_))
         strs = [""]+str_.split('\n')
