@@ -1,8 +1,8 @@
 
 
-# MMdnn - Utilization for Keras to Tensorflow
+# MMdnn - Utilization for Keras2Tensorflow
 
-[MMdnn]((https://github.com/Microsoft/MMdnn)) is a model converter and enables us to transform model from one framework to another. This repository introduces the **utilization of MMdnn** and provide a simple **GUI** for inference task of image classification.
+[MMdnn]((https://github.com/Microsoft/MMdnn)) is a model converter and enables us to transform model from one framework to another. This repository introduces the **utilization of MMdnn** and provides a simple **GUI** for inference task of image classification.
 
 Firstly, download weights(.h5) and model structure(.json) form **Keras** and then convert them to **Intermediate Representation(IR)**. You can visualize IR if you'd like by  [MMdnn model visualizer](http://mmdnn.eastasia.cloudapp.azure.com:8080/) .
 
