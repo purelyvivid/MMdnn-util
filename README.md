@@ -14,7 +14,7 @@ Last but not least,  use python module `try_inference_tf` for inference.
 
 All you need to do is to set : 1) the path of your folder, 2) which model you'd like to use,  3) the path of image to be infered, 4) your self-defined name for this inference.
 
-If you havw already finish evironment settings (step 1&2 of the following paragraph) and you'd like to run it by only using one command, you can modify the file `infer_keras2tf.sh`  and run below command (for step 3-10):
+If you have already finished evironment settings (step 1&2 of the following paragraph) and you'd like to run it by only using one command, you can modify the file `infer_keras2tf.sh`  and run below command (for step 3-10):
 
 ```shell
 sh infer_keras2tf.sh  # for linux
