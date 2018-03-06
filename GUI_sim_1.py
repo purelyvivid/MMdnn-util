@@ -17,7 +17,7 @@ else: #version[0] == '3':
 
 from PIL import ImageTk, Image
 #from subprocess import call
-from inference_tf import inference, models
+from try_inference_tf import inference, models
 
 
 class GUI():
