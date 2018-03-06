@@ -10,14 +10,14 @@ print('Python version:',version)
 #import ttk
 if version[0] == '2':
     from Tkinter import *
-    from ttk import *
+    from ttk import Button, Checkbutton, Label, Entry, Combobox
 else: #version[0] == '3':
     from tkinter import *
-    from tkinter.ttk import *
+    from tkinter.ttk import Button, Checkbutton, Label, Entry, Combobox
 
 from PIL import ImageTk, Image
 #from subprocess import call
-from try_inference_tf import inference, models
+from inference_tf import inference, models
 
 
 class GUI():
@@ -33,26 +33,24 @@ class GUI():
         
     # --------Mode interface ---------    
     def buildGUI_1(self): #CNN
-        self.master.title('build CNN -- load model') 
-        # models = ("inception_v3","vgg16","vgg19","resnet","mobilenet","xception","YOLO")
-        self.label_1to1_text_combobox("Model", models , width=50 ) 
-        self.label_1to1_text_entry(name="ImageUrl", default_text="cat1.jpeg", width=100)
+        self.master.title('build CNN -- load model')         
+        self.label_1to1_text_combobox("Model", models , width=50 ) # models = ("inception_v3","vgg16"...)
+        self.label_1to1_text_entry(name="ImageUrl", default_text="person.jpg", width=100)
+        self.vb_dict = self.generate_variable_dict()
         self.button(self.click_show_img, "Show Image")
         self.button(self.click_inference, "Inference")
+        self.inference_result_str = StringVar()
+        self.textvariable_label(textvariable=self.inference_result_str)
         
     def click_show_img(self):
-	self.vb_dict = self.generate_variable_dict()
+        self.vb_dict = self.generate_variable_dict() # cannot skip
         img_path = self.vb_dict["ImageUrl"]
         self.img_label(path=img_path)
     
     def click_inference(self):
-        self.vb_dict = self.generate_variable_dict()
-        str_ = inference('cat.jpeg',self.vb_dict["Model"])
-        #self.text_text(text=str(str_))
-        strs = [""]+str_.split('\n')
-        for s in strs:
-            self.text_label(text=s)
-        
+        self.vb_dict = self.generate_variable_dict() # cannot skip
+        str_ = inference(self.vb_dict["ImageUrl"],self.vb_dict["Model"])
+        self.inference_result_str.set(str(str_))
         
     # --------Component Conbination --------- 
     def label_1to1_text_combobox(self, name="", values=("1","2"), default_Chosen=0, width=10):
@@ -124,7 +122,13 @@ class GUI():
         #self.all_comp[-1].pack() 
         self.all_comp[-1].grid(row=self.row, column=1, sticky=W) #
         self.row += 1 #
-
+        
+    def textvariable_label(self, textvariable):        
+        self.all_comp.append(Label(self.master, textvariable=textvariable))         
+        #self.all_comp[-1].pack()
+        self.all_comp[-1].grid(row=self.row, column=1) #
+        self.row += 1 #
+        
     def text_label(self, text="OK"):        
         self.all_comp.append(Label(self.master, text=text))         
         #self.all_comp[-1].pack()
@@ -132,14 +136,14 @@ class GUI():
         self.row += 1 #
         
     def text_text(self, text="OK"):        
-        text_ = Text(self.master, width=100 , height=30)
+        text_ = Text(self.master, width=80 , height=10)
         text_.insert(INSERT, text)
         text_.insert(END, "")
         self.all_comp.append(text_) 
         #self.all_comp[-1].pack()
         self.all_comp[-1].grid(row=self.row, column=1) #
         self.row += 1 #   
-        
+
     def img_label(self, path="cat1.jpeg"): 
         window = Toplevel()
         #window.geometry('400x400')
