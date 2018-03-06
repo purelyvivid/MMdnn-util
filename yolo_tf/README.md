@@ -39,4 +39,4 @@ Or, you could do inference by a simple **GUI**.  Use below command to open GUI.
 python GUI_sim_1.py
 ```
 
-![alarm txt](./GUI_yolo_demo.png)
+![alarm txt](./GUI_yolo_tf.png)
